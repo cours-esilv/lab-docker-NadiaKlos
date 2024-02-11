@@ -1,4 +1,15 @@
 version: '3'
 services:
   my-service:
-    image: lab3_mlops
+    image: back_image
+    ports:
+      - "8080:8080"
+    environment:
+      - CURRENT_ENVIRONMENT=development
+
+  my-frontend:
+    image: front_image
+    ports:
+      - "80:80"
+    environment:
+      - WS_BACK_URL=http://my-service:8080
